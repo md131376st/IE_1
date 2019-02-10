@@ -64,6 +64,13 @@ public class Project {
         return -1;
     }
 
+    private int findskil(Skills userskil){
+        for (int i=0; i<this.needskil.size(); i++){
+            if(needskil.get(i).getName().equals(userskil.getName()))
+                return i;
+        }
+        return -1;
+    }
     String auction(){
 //        System.out.println("hi");
         int max = 0;
@@ -75,10 +82,10 @@ public class Project {
             ArrayList<Skills> userskils = anUserREQ.getUserREQ().getSkill();
             for (Skills userskil : userskils) {
 
-                int skillindex = this.needskil.indexOf(userskil);
+                int skillindex = findskil(userskil);
                 if (skillindex != -1)
                     score += Math.pow(userskil.getPoints() - this.needskil.get(skillindex).getPoints(), 2) * 1000;
-                else score += Math.pow(userskil.getPoints(), 2) * 1000;
+//                else score += Math.pow(userskil.getPoints(), 2) * 1000;
             }
             score += this.getBudget() - anUserREQ.getBidAmount();
 
