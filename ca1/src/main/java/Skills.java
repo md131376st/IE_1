@@ -4,17 +4,17 @@ public class Skills {
     private String name;
     private int points;
 
+    Skills(JSONObject object) {
+        this.name = object.getString("name");
+        this.points = object.getInt("points");
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getPoints() {
+    int getPoints() {
         return points;
-    }
-
-    Skills(JSONObject object) {
-        this.name = object.getString("name");
-        this.points = object.getInt("points");
     }
 
 }
