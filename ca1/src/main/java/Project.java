@@ -43,7 +43,7 @@ public class Project {
             return false;
         else{
             for (Skills aNeedskil : this.needskil) {
-                int skillplace = newuser.getSkill().indexOf(aNeedskil);
+                int skillplace = findskill(newuser, aNeedskil);
                 if (skillplace != -1) {
                     if (newuser.getSkill().get(skillplace).getPoints() < aNeedskil.getPoints())
                         return false;
@@ -56,13 +56,21 @@ public class Project {
      return true;
     }
 
+    private int findskill(Register newuser, Skills aNeedskil){
+        for (int i = 0; i<newuser.getSkill().size(); i++){
+            if(newuser.getSkill().get(i).getName().equals(aNeedskil.getName()))
+                return i;
+        }
+        return -1;
+    }
+
     String auction(){
-        System.out.println("hi");
+//        System.out.println("hi");
         int max = 0;
 
         String winner ="";
         for (ReqUser anUserREQ : userREQ) {
-            System.out.println("hi1");
+//            System.out.println("hi1");
             int score = 0;
             ArrayList<Skills> userskils = anUserREQ.getUserREQ().getSkill();
             for (Skills userskil : userskils) {
@@ -78,8 +86,8 @@ public class Project {
                 max = score;
                 winner = anUserREQ.getUserREQ().getUsername();
             }
-            System.out.println(score);
-            System.out.println(winner);
+//            System.out.println(score);
+//            System.out.println(winner);
         }
       return "winner: "+winner;
     }

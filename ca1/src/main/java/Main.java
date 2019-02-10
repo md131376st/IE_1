@@ -53,6 +53,8 @@ public class Main {
                     isFinished = true;
                     break;
             }
+//            System.out.println(myusers.size());
+//            System.out.println(projects.size());
         }
     }
 
@@ -81,6 +83,7 @@ public class Main {
         int index = indexofstring(object.getString("biddingUser"),false);
         int index1 = indexofstring(object.getString("projectTitle"),true);
         if (index!= -1 && index1!=-1) {
+//            System.out.println("hi3");
          return projects.get(index1).addreq(myusers.get(index),object);
         }
 
