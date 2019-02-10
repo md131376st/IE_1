@@ -1,5 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
+import java.lang.Math;
 
         import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ public class Project {
     private String title;
     private ArrayList<Skills> needskil;
     private int budget;
-    private ArrayList<Register> userREQ;
+    private ArrayList<ReqUser> userREQ;
 
     Project(JSONObject object) {
         this.title = object.getString("title");
@@ -29,7 +30,7 @@ public class Project {
         return needskil;
     }
 
-    public int getBudget() {
+    private int getBudget() {
         return budget;
     }
 
@@ -50,8 +51,36 @@ public class Project {
                 else return false;
 
             }
-            this.userREQ.add(newuser);
+            this.userREQ.add(new ReqUser(newuser,object.getInt("bidAmount") ));
         }
      return true;
+    }
+
+    String auction(){
+        System.out.println("hi");
+        int max = 0;
+
+        String winner ="";
+        for (ReqUser anUserREQ : userREQ) {
+            System.out.println("hi1");
+            int score = 0;
+            ArrayList<Skills> userskils = anUserREQ.getUserREQ().getSkill();
+            for (Skills userskil : userskils) {
+
+                int skillindex = this.needskil.indexOf(userskil);
+                if (skillindex != -1)
+                    score += Math.pow(userskil.getPoints() - this.needskil.get(skillindex).getPoints(), 2) * 1000;
+                else score += Math.pow(userskil.getPoints(), 2) * 1000;
+            }
+            score += this.getBudget() - anUserREQ.getBidAmount();
+
+            if (score > max) {
+                max = score;
+                winner = anUserREQ.getUserREQ().getUsername();
+            }
+            System.out.println(score);
+            System.out.println(winner);
+        }
+      return "winner: "+winner;
     }
 }

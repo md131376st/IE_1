@@ -48,6 +48,7 @@ public class Main {
                     System.out.println(commandData);
                     break;
                 case "auction":
+                    System.out.println(auction(commandData));
                     System.out.println(commandData);
                     isFinished = true;
                     break;
@@ -60,13 +61,16 @@ public class Main {
         int spaceIndex = command.indexOf(" ");
         return new Pair<>(command.substring(0, spaceIndex), command.substring(spaceIndex));
     }
+
     private static void adduser(Register newuser){
         myusers.add(newuser);
     }
+
     private static void addproject(Project newproject){
         projects.add(newproject);
 
     }
+
     private static JSONObject jsonstring(String commandData ){
         JSONTokener tokener = new JSONTokener(commandData);
         return new JSONObject(tokener);
@@ -82,6 +86,17 @@ public class Main {
 
         else return false;
     }
+
+    private static String auction(String commandData){
+        JSONObject object = jsonstring(commandData);
+        int index1 = indexofstring(object.getString("projectTitle"),true);
+        if (index1 != -1)
+        {
+            return projects.get(index1).auction();
+        }
+        return "Project not Found";
+    }
+
     private static int indexofstring(String comperstring , boolean flag){
         if (!flag){
             for (int i = 0 ; i<myusers.size(); i++ ){
