@@ -17,14 +17,15 @@ public class Main {
     private static boolean isFinished = false;
     static private ArrayList<Register> myusers = new ArrayList<>();
 
+
     public static void main(String[] args) {
         while (!isFinished) {
             Pair<String, String> commandParts = getCommandParts();
             String commandName = commandParts.getKey();
             String commandData = commandParts.getValue();
-            JSONTokener tokener = new JSONTokener(commandData);
+            JSONObject object = jsonstring(commandData);
 //            System.out.println(tokener);
-            JSONObject object = new JSONObject(tokener);
+
 //            System.out.println("myname is mona");
 //            System.out.println(object.getJSONArray("skills").get(0).getClass());
 //            System.out.println("myname is mona");
@@ -55,5 +56,10 @@ public class Main {
     }
     private static void adduser(Register newuser){
         myusers.add(newuser);
+    }
+    private static JSONObject jsonstring(String commandData ){
+        JSONTokener tokener = new JSONTokener(commandData);
+        JSONObject object = new JSONObject(tokener);
+        return object;
     }
 }
