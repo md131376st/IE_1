@@ -3,6 +3,8 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.InputStream;
+
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -42,6 +44,7 @@ public class Main {
                     System.out.println(commandData);
                     break;
                 case "bid":
+                    addbid(commandData);
                     System.out.println(commandData);
                     break;
                 case "auction":
@@ -66,7 +69,36 @@ public class Main {
     }
     private static JSONObject jsonstring(String commandData ){
         JSONTokener tokener = new JSONTokener(commandData);
-        JSONObject object = new JSONObject(tokener);
-        return object;
+        return new JSONObject(tokener);
     }
+
+    private static boolean addbid(String commandData){
+        JSONObject object = jsonstring(commandData);
+        int index = indexofstring(object.getString("biddingUser"),false);
+        int index1 = indexofstring(object.getString("projectTitle"),true);
+        if (index!= -1 && index1!=-1) {
+         return projects.get(index1).addreq(myusers.get(index),object);
+        }
+
+        else return false;
+    }
+    private static int indexofstring(String comperstring , boolean flag){
+        if (!flag){
+            for (int i = 0 ; i<myusers.size(); i++ ){
+                if(myusers.get(i).getUsername().equals(comperstring))
+                    return i;
+            }
+            return -1;
+        }
+        else{
+            for (int i=0; i<projects.size(); i++){
+                if(projects.get(i).getTitle().equals(comperstring))
+                    return i;
+            }
+            return -1;
+        }
+    }
+
+
+
 }
