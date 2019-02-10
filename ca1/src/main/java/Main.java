@@ -16,6 +16,8 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static boolean isFinished = false;
     static private ArrayList<Register> myusers = new ArrayList<>();
+    static private ArrayList<Project> projects = new ArrayList<>();
+
 
 
     public static void main(String[] args) {
@@ -36,6 +38,7 @@ public class Main {
                     System.out.println(commandData);
                     break;
                 case "addProject":
+                    addproject(new Project(object));
                     System.out.println(commandData);
                     break;
                 case "bid":
@@ -56,6 +59,10 @@ public class Main {
     }
     private static void adduser(Register newuser){
         myusers.add(newuser);
+    }
+    private static void addproject(Project newproject){
+        projects.add(newproject);
+
     }
     private static JSONObject jsonstring(String commandData ){
         JSONTokener tokener = new JSONTokener(commandData);
