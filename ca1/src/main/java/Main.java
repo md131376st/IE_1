@@ -53,8 +53,12 @@ public class Main {
     }
 
     private static void addproject(Project newproject){
-        projects.add(newproject);
-
+        int index = indexofstring(newproject.getTitle() , true);
+        if(index == -1) {
+            projects.add(newproject);
+        }
+        else
+            System.out.println("This Project Was Added Before");
     }
 
     private static JSONObject jsonstring(String commandData ){
@@ -69,7 +73,6 @@ public class Main {
         if (index!= -1 && index1!=-1) {
          return projects.get(index1).addreq(myusers.get(index),object);
         }
-
         else return false;
     }
 
