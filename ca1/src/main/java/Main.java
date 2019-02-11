@@ -44,7 +44,12 @@ public class Main {
     }
 
     private static void adduser(Register newuser){
-        myusers.add(newuser);
+        int index = indexofstring(newuser.getUsername() , false);
+        if(index == -1) {
+            myusers.add(newuser);
+        }
+        else
+            System.out.println("This User Has Registered Before");
     }
 
     private static void addproject(Project newproject){
