@@ -73,7 +73,14 @@ public class Main {
         if (index!= -1 && index1!=-1) {
          return projects.get(index1).addreq(myusers.get(index),object);
         }
-        else return false;
+        else{
+            if(index == -1){
+                System.out.println("User Not Found");
+            }
+            else
+                System.out.println("Project Not Found");
+            return false;
+        }
     }
 
     private static String auction(String commandData){
