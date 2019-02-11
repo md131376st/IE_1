@@ -10,7 +10,6 @@ class Register {
 
     Register(JSONObject object) {
         this.username = object.getString("username");
-//        System.out.println(this.username);
         Skill = new ArrayList<>();
          JSONArray myskills = object.getJSONArray("skills");
         for (int i = 0 ; i < myskills.length(); i++){

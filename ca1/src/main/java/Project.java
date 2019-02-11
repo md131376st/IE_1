@@ -49,7 +49,6 @@ public class Project {
                         return false;
                 }
                 else return false;
-
             }
             this.userREQ.add(new ReqUser(newuser,object.getInt("bidAmount") ));
         }
@@ -72,12 +71,10 @@ public class Project {
         return -1;
     }
     String auction(){
-//        System.out.println("hi");
         int max = 0;
 
         String winner ="";
         for (ReqUser anUserREQ : userREQ) {
-//            System.out.println("hi1");
             int score = 0;
             ArrayList<Skills> userskils = anUserREQ.getUserREQ().getSkill();
             for (Skills userskil : userskils) {
@@ -85,7 +82,7 @@ public class Project {
                 int skillindex = findskil(userskil);
                 if (skillindex != -1)
                     score += Math.pow(userskil.getPoints() - this.needskil.get(skillindex).getPoints(), 2) * 1000;
-//                else score += Math.pow(userskil.getPoints(), 2) * 1000;
+//              else score += Math.pow(userskil.getPoints(), 2) * 1000;
             }
             score += this.getBudget() - anUserREQ.getBidAmount();
 
@@ -93,8 +90,6 @@ public class Project {
                 max = score;
                 winner = anUserREQ.getUserREQ().getUsername();
             }
-//            System.out.println(score);
-//            System.out.println(winner);
         }
       return "winner: "+winner;
     }
