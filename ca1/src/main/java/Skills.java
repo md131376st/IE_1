@@ -1,6 +1,6 @@
 import org.json.JSONObject;
 
-public class Skills {
+class Skills {
     private String name;
     private int points;
 
@@ -9,7 +9,7 @@ public class Skills {
         this.points = object.getInt("points");
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
