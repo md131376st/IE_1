@@ -27,6 +27,16 @@ public class Project {
         this.budget = object.getInt("budget");
     }
 
+    public Project(String id, String title, String description, String imageURL, long deadline, ArrayList<Skills> needskil, int budget) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.deadline = deadline;
+        this.needskil = needskil;
+        this.budget = budget;
+    }
+
     String getTitle() {
         return title;
     }
