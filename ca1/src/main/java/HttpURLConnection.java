@@ -8,11 +8,11 @@ import java.net.URL;
 import java.net.URLConnection;
 
 class MyHttpURLConnection {
-    public StringBuffer getContent() {
+    StringBuffer getContent() {
         return content;
     }
 
-    StringBuffer content ;
+    private StringBuffer content ;
 
     MyHttpURLConnection(){
         this.content = new StringBuffer();
@@ -24,15 +24,11 @@ class MyHttpURLConnection {
         con.setRequestMethod("GET");
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-//        content.append('{');
         while ((inputLine = in.readLine()) != null) {
             this.content.append(inputLine);
         }
-//        content.append('}');
         in.close();
-        //        System.out.println(content);
         con.disconnect();
-//        return content;
 
     }
 

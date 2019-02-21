@@ -13,8 +13,8 @@ class AllSkills {
         MyHttpURLConnection get_skills = new MyHttpURLConnection();
         try {
             get_skills.get_url(url);
-            System.out.println(get_skills.content.toString());
-            allskills = new Utility().getskilsnames( new Utility().jsonbufferstring(get_skills.content));
+            System.out.println(get_skills.getContent().toString());
+            allskills = new Utility().getskilsnames( new Utility().jsonbufferstring(get_skills.getContent()));
 
         } catch (IOException e) {
             e.printStackTrace();
