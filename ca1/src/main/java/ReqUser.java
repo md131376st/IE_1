@@ -4,6 +4,7 @@ class ReqUser {
 
     private Register userREQ;
     private int bidAmount ;
+    private Project project;
 
     ReqUser(Register userREQ, int bidAmount) {
         this.userREQ = userREQ;
