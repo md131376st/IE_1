@@ -71,11 +71,20 @@ class Utility {
 
     ArrayList<Skills> getskilsnames(ArrayList<JSONObject> nameskils){
         ArrayList<Skills> skills = new ArrayList<>();
-//        JSONArray nameskills = object.getJSONArray("");
         for (JSONObject nameskil : nameskils) {
             skills.add(new Skills(nameskil.getString("name"), 0));
         }
         return skills;
+    }
+
+    @SuppressWarnings("unchecked")
+    ArrayList<Project> getprject(ArrayList<JSONObject> projectlist){
+        ArrayList<Project> project = new ArrayList<>();
+        for (JSONObject projasn : projectlist){
+            ArrayList<Object> resultdata = jsonparser(new ArrayList<>(Arrays.asList("id", "title", "description","imageURL", "deadline", "skills", "budget")),projasn);
+            project.add(new Project((String)resultdata.get(0),(String)resultdata.get(1),(String)resultdata.get(2),(String)resultdata.get(3),(long)resultdata.get(4),(ArrayList<Skills>)resultdata.get(5),(int)resultdata.get(6)));
+        }
+        return project;
     }
 
 

@@ -3,10 +3,10 @@
   "firstName":"ali",
   "lastName":"sharifzade",
   "skills":[
-    {"name":"HTML","points":5},
-    {"name":"Javascript","points":4},
-    {"name":"C++","points":2},
-    {"name":"Java","points":3}],
+    {"name":"HTML","point":5},
+    {"name":"Javascript","point":4},
+    {"name":"C++","point":2},
+    {"name":"Java","point":3}],
   "jobTitle":"web programmer",
   "bio":"روی سنگ قبرم بنویسید: خدا بیامرز میخواست خیلی کارا بکنه ولی پول نداشت"
 }

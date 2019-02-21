@@ -1,5 +1,6 @@
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 class Projects {
@@ -22,6 +23,16 @@ class Projects {
 
     }
 
+    void get_project_url(String url){
+        MyHttpURLConnection get_projects = new MyHttpURLConnection();
+        try {
+            get_projects.get_url(url);
+            projects =new Utility().getprject(new Utility().jsonbufferstring(get_projects.getContent()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     void addproject(Project newproject){
         int index = indexofstring(newproject.getTitle());
         if(index == -1) {
