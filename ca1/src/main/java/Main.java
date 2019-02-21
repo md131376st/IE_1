@@ -12,31 +12,32 @@ public class Main {
     public static void main(String[] args)throws Exception {
         MyUser myUser=MyUser.getInstance();
         Projects myProjects = Projects.getInstance();
+        myUser.adduser(new Utility().getDefultUser());
 
-        ReflectionServer server = new ReflectionServer();
-        server.startServer();
-        while (!isFinished) {
-            Pair<String, String> commandParts = getCommandParts();
-            String commandName = commandParts.getKey();
-            String commandData = commandParts.getValue();
-            JSONObject object = jsonstring(commandData);
-
-            switch (commandName) {
-                case "register":
-                    myUser.adduser(new Register(object));
-                    break;
-                case "addProject":
-                    myProjects.addproject(new Project(object));
-                    break;
-                case "bid":
-                    myProjects.addbid(commandData, myUser);
-                    break;
-                case "auction":
-                    System.out.println(myProjects.auction(commandData));
-                    isFinished = true;
-                    break;
-            }
-        }
+//        ReflectionServer server = new ReflectionServer();
+//        server.startServer();
+//        while (!isFinished) {
+//            Pair<String, String> commandParts = getCommandParts();
+//            String commandName = commandParts.getKey();
+//            String commandData = commandParts.getValue();
+//            JSONObject object = jsonstring(commandData);
+//
+//            switch (commandName) {
+//                case "register":
+//                    myUser.adduser(new Register(object));
+//                    break;
+//                case "addProject":
+//                    myProjects.addproject(new Project(object));
+//                    break;
+//                case "bid":
+//                    myProjects.addbid(commandData, myUser);
+//                    break;
+//                case "auction":
+//                    System.out.println(myProjects.auction(commandData));
+//                    isFinished = true;
+//                    break;
+//            }
+//        }
 
     }
 
