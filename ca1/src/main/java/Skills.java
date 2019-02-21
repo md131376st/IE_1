@@ -9,6 +9,12 @@ class Skills {
         this.points = object.getInt("points");
     }
 
+    Skills(String name, int points) {
+        this.name = name;
+        this.points = points;
+    }
+
+
     String getName() {
         return name;
     }

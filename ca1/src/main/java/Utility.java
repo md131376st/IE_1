@@ -17,6 +17,14 @@ class Utility {
         JSONTokener tokener = new JSONTokener(commandData);
         return new JSONObject(tokener);
     }
+    ArrayList<JSONObject> jsonbufferstring( StringBuffer commandData){
+        ArrayList<JSONObject> jsonobjects = new ArrayList<>();
+        JSONArray arr = new JSONArray(commandData.toString());
+        for (int i=0; i<arr.length() ; i++){
+            jsonobjects.add(arr.getJSONObject(i));
+        }
+        return jsonobjects;
+    }
     @SuppressWarnings("unchecked")
     Register getDefultUser()throws FileNotFoundException {
         JSONTokener tokener = new JSONTokener(new FileReader("/Users/md/Desktop/collage/IE/CA1/SampleCode/ca1/defultuser.json"));
@@ -60,4 +68,15 @@ class Utility {
         }
         return skills;
     }
+
+    ArrayList<Skills> getskilsnames(ArrayList<JSONObject> nameskils){
+        ArrayList<Skills> skills = new ArrayList<>();
+//        JSONArray nameskills = object.getJSONArray("");
+        for (JSONObject nameskil : nameskils) {
+            skills.add(new Skills(nameskil.getString("name"), 0));
+        }
+        return skills;
+    }
+
+
 }
