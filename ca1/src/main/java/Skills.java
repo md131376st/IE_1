@@ -6,7 +6,7 @@ class Skills {
 
     Skills(JSONObject object) {
         this.name = object.getString("name");
-        this.points = object.getInt("points");
+        this.points = object.getInt("point");
     }
 
     Skills(String name, int points) {
