@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 
 class Register {
-
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String jobTitle;
+    private String profilePictureURL;
     private ArrayList<Skills> Skill;
     private String username;
+    private String bio;
 
     Register(JSONObject object) {
         this.username = object.getString("username");
