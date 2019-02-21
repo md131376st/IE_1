@@ -9,9 +9,12 @@ public class Main {
     private static boolean isFinished = false;
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
         MyUser myUser=MyUser.getInstance();
         Projects myProjects = Projects.getInstance();
+
+        ReflectionServer server = new ReflectionServer();
+        server.startServer();
         while (!isFinished) {
             Pair<String, String> commandParts = getCommandParts();
             String commandName = commandParts.getKey();
@@ -20,7 +23,6 @@ public class Main {
 
             switch (commandName) {
                 case "register":
-
                     myUser.adduser(new Register(object));
                     break;
                 case "addProject":
@@ -35,6 +37,7 @@ public class Main {
                     break;
             }
         }
+
     }
 
     private static Pair<String, String> getCommandParts() {
