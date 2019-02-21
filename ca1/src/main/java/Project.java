@@ -5,7 +5,12 @@ import java.lang.Math;
         import java.util.ArrayList;
 
 public class Project {
+    private String id;
     private String title;
+    private String description;
+    private String imageURL;
+    private long deadline;
+    private Register winner;
     private ArrayList<Skills> needskil;
     private int budget;
     private ArrayList<ReqUser> userREQ;
