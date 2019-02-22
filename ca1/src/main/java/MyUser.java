@@ -33,6 +33,13 @@ class MyUser {
             }
             return -1;
     }
+    public static Register FindUser(String id){
+        for (Register user : myusers) {
+            if(user.getId().equals(id))
+                return user;
+        }
+        return null;
+    }
     public static void addTempUser(){
 
         Skills first = new Skills("HTML" , 5 );

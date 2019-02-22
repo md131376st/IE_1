@@ -34,4 +34,22 @@ class Register {
     private void addSkills(Skills rskill){
         this.Skill.add(rskill);
     }
+
+    public String getId() { return id;}
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public String getBio() {
+        return bio;
+    }
 }

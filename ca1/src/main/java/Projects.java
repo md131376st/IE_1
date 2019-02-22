@@ -25,7 +25,39 @@ class Projects {
             return -1;
 
     }
-
+    public static int getProjectIndexByID(String id){
+        for (int i = 0 ; i < projects.size() ; i++)
+        {
+            if(projects.get(i).getId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    public boolean hasNecessarySkills(String  id , Register user){
+        boolean projectFound = false;
+        boolean enoughSkill = true;
+        int index = 0;
+        for (int i = 0 ; i < projects.size() ; i++)
+        {
+            if(projects.get(i).getId().equals(id)){
+                projectFound = true;
+                index = i;
+                break;
+            }
+        }
+        if(projectFound)
+        {
+            for (Skills temp : user.getSkill()) {
+                int skillIndex =  projects.get(index).findskil(temp);
+                if(skillIndex != -1) {
+                    if (projects.get(index).getNeedskil().get(skillIndex).getPoints() > temp.getPoints())
+                        enoughSkill = false;
+                }
+            }
+        }
+        return enoughSkill;
+    }
     void get_project_url(String url){
         MyHttpURLConnection get_projects = new MyHttpURLConnection();
         try {

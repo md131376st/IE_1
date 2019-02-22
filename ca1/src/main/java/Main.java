@@ -11,7 +11,6 @@ public class Main {
 
     public static void main(String[] args)throws Exception {
         MyUser myUser=MyUser.getInstance();
-//        myUser.addTempUser();
         Projects myProjects = Projects.getInstance();
         myUser.adduser(new Utility().getDefultUser());
         AllSkills incSkills = AllSkills.getInstance();
