@@ -11,6 +11,9 @@ class Projects {
         return ourInstance;
     }
 
+    static public ArrayList<Project> getProjects(){
+        return projects;
+    }
     private Projects() {
     }
 
