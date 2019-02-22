@@ -20,7 +20,7 @@ class MyHttpURLConnection {
 
     void get_url(String url) throws IOException {
         URL url_ = new URL(url);
-        HttpURLConnection con = (HttpURLConnection)url_.openConnection();
+        HttpURLConnection con = (HttpURLConnection) url_.openConnection();
         con.setRequestMethod("GET");
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -30,11 +30,5 @@ class MyHttpURLConnection {
         in.close();
         con.disconnect();
 
-    }
-
-
-    public static void main(String[] args)throws Exception {
-        MyHttpURLConnection hi = new MyHttpURLConnection();
-        hi.get_url("http://142.93.134.194:8000/joboonja/project");
     }
 }

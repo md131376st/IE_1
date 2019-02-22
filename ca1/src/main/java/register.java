@@ -23,16 +23,6 @@ class Register {
         this.bio = bio;
     }
 
-//    Register() {
-//        this.id = object.getString("id");
-//        Skill = new ArrayList<>();
-//         JSONArray myskills = object.getJSONArray("skills");
-//        for (int i = 0 ; i < myskills.length(); i++){
-//             Skills newskill = new Skills(myskills.getJSONObject(i));
-//             addSkills(newskill);
-//        }
-//    }
-
     String getUsername() {
         return username;
     }

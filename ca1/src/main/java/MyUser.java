@@ -18,7 +18,6 @@ class MyUser {
 
     private MyUser() {
     }
-
     void adduser(Register newuser){
         int index = indexofstring(newuser.getUsername() );
         if(index == -1) {
@@ -34,5 +33,4 @@ class MyUser {
             }
             return -1;
         }
-
 }

@@ -27,10 +27,12 @@ class Utility {
     }
     @SuppressWarnings("unchecked")
     Register getDefultUser()throws FileNotFoundException {
-        JSONTokener tokener = new JSONTokener(new FileReader("/Users/md/Desktop/collage/IE/CA1/SampleCode/ca1/defultuser.json"));
+        JSONTokener tokener = new JSONTokener(new FileReader("D:/University/3971-2/IE/Projects/2/2/ca1/defultuser.json"));
         JSONObject object = new JSONObject(tokener);
-        ArrayList <Object> info = jsonparser(new ArrayList<>(Arrays.asList("id", "firstName", "lastName", "jobTitle", "profilePictureURL", "skills", "bio")),object);
-        return new Register((String)info.get(0),(String)info.get(1),(String)info.get(2),(String)info.get(3),(String)info.get(4),(ArrayList<Skills>)info.get(5),(String)info.get(6));
+        ArrayList <Object> info = jsonparser(new ArrayList<>(Arrays.asList("id", "firstName", "lastName"
+                                                , "jobTitle", "profilePictureURL", "skills", "bio")),object);
+        return new Register((String)info.get(0),(String)info.get(1),(String)info.get(2),(String)info.get(3)
+                            ,(String)info.get(4),(ArrayList<Skills>)info.get(5),(String)info.get(6));
     }
 
     private ArrayList<Object> jsonparser(ArrayList<String> data, JSONObject object)throws JSONException {
@@ -78,14 +80,15 @@ class Utility {
     }
 
     @SuppressWarnings("unchecked")
-    ArrayList<Project> getprject(ArrayList<JSONObject> projectlist){
+    ArrayList<Project> getprject(ArrayList<JSONObject> projectlist) {
         ArrayList<Project> project = new ArrayList<>();
-        for (JSONObject projasn : projectlist){
-            ArrayList<Object> resultdata = jsonparser(new ArrayList<>(Arrays.asList("id", "title", "description","imageURL", "deadline", "skills", "budget")),projasn);
-            project.add(new Project((String)resultdata.get(0),(String)resultdata.get(1),(String)resultdata.get(2),(String)resultdata.get(3),(long)resultdata.get(4),(ArrayList<Skills>)resultdata.get(5),(int)resultdata.get(6)));
+        for (JSONObject projasn : projectlist) {
+            ArrayList<Object> resultdata = jsonparser(new ArrayList<>(Arrays.asList("id", "title"
+                    , "description", "imageURL", "deadline", "skills", "budget")), projasn);
+            project.add(new Project((String) resultdata.get(0), (String) resultdata.get(1), (String) resultdata.get(2)
+                    , (String) resultdata.get(3), (long) resultdata.get(4)
+                    , (ArrayList<Skills>) resultdata.get(5), (int) resultdata.get(6)));
         }
         return project;
     }
-
-
 }
