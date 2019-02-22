@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import com.sun.net.httpserver.HttpExchange;
 
 public class ProjectPage implements Page {
-    Projects myProjects;
-    ArrayList<Project> projects;
-    String projectsList = FindWantedProjects();
+    private Projects myProjects;
+    private ArrayList<Project> projects;
+    private String projectsList = FindWantedProjects();
 //    String projectsList = "";
 
     @Override
@@ -36,34 +36,34 @@ public class ProjectPage implements Page {
     }
     public ProjectPage() {
         myProjects = Projects.getInstance();
-        projects = myProjects.getProjects();
+        projects = Projects.getProjects();
     }
 
-    public String FindWantedProjects() {
+    private String FindWantedProjects() {
         MyUser myuser = MyUser.getInstance();
-        String list = "";
+        StringBuilder list = new StringBuilder();
         String temp = "";
         int neededskills = 0 ;
         ArrayList<Skills> userskill = myuser.getMyusers_reg(0).getSkill();
-        for(int i = 0 ; i < projects.size() ; i++)
-        {
-           for(int j = 0 ; j<userskill.size();j++) {
-               int index = projects.get(i).findskil(userskill.get(j));
-               if(index != -1){
-                   neededskills++;
-               }
-           }
-           if(neededskills == userskill.size()){
-                        temp ="<tr>"
-                                +"<td>"+ projects.get(i).getId() +"</td>"
-                                +"<td>"+projects.get(i).getTitle()+"</td>"
-                                +"<td>"+projects.get(i).getDescription()+"</td>"
-                                +"<td>"+projects.get(i).getDeadline()+"</td>"
-                                +"<td>"+projects.get(i).getBudget()+"</td>"
-                            +"</tr>";
-           }
-           list+=temp;
+        for (Project project : projects) {
+            for (Skills anUserskill : userskill) {
+                int index = project.findskil(anUserskill);
+                if (index != -1) {
+                    neededskills++;
+                }
+            }
+            if (neededskills == userskill.size()) {
+                temp = "<tr>"
+                        + "<td>" + project.getId() + "</td>"
+                        + "<td>" + project.getTitle() + "</td>"
+                        + "<td>" + project.getDescription() + "</td>"
+                        + "<td>" + project.getDeadline() + "</td>"
+                        + "<td>" + project.getBudget() + "</td>"
+                        + "</tr>";
+            }
+            list.append(temp);
         }
-        return list;
+        return list.toString();
     }
+    ////////////need to check the point for each project
 }
