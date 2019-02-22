@@ -5,21 +5,31 @@ import java.util.ArrayList;
 import com.sun.net.httpserver.HttpExchange;
 
 public class ProjectId implements Page {
-    Projects myProjects;
-    ArrayList<Project> projects;
-    //    String projectsList = FindWantedProjects();
+//    Projects myProjects = Projects.getInstance();
+//    ArrayList<Project> projects = Projects.getProjects();
     String projectsList = "";
 
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
         boolean hasNeeded;
         String response;
-        response = "";
         String[] path = httpExchange.getRequestURI().getPath().split("/");
         String id = path[3];
         hasNeeded = CheckAvailability(id);
         if(hasNeeded)
         {
+            Project selected = Projects.getProjects().get(Projects.getProjectIndexByID(id));
+            response = "<html><title>Project Info</title>"
+                    + "<body>"
+                    +"<ul>"
+                    +   "<li>id = " + selected.getId() + "</li>"
+                    +   "<li>title = " + selected.getTitle() + "</li>"
+                    +   "<li>description = " + selected.getDescription() + "</li>"
+                    +   "<li>deadline = " + selected.getDeadline() + "</li>"
+                    +   "<li>budget = " + selected.getBudget() + "</li>"
+                    + "</ul> "
+                    +"</body>"
+                    + "</html>";
             httpExchange.sendResponseHeaders(200, response.length());
         }
 

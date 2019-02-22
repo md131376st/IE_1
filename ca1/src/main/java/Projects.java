@@ -25,7 +25,15 @@ class Projects {
             return -1;
 
     }
-
+    public static int getProjectIndexByID(String id){
+        for (int i = 0 ; i < projects.size() ; i++)
+        {
+            if(projects.get(i).getId().equals(id)){
+                return i;
+            }
+        }
+        return -1;
+    }
     public boolean hasNecessarySkills(String  id , Register user){
         boolean projectFound = false;
         boolean enoughSkill = true;
