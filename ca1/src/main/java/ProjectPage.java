@@ -43,15 +43,19 @@ public class ProjectPage implements Page {
         StringBuilder list = new StringBuilder();
         String temp = "";
         int neededskills = 0 ;
+        boolean enoughPoint = true;
         ArrayList<Skills> userskill = myuser.getMyusers_reg(0).getSkill();
         for (Project project : projects) {
             for (Skills anUserskill : userskill) {
                 int index = project.findskil(anUserskill);
                 if (index != -1) {
-                    neededskills++;
+                    if(anUserskill.getPoints()== project.getNeedskil().get(index).getPoints())
+                        neededskills++;
+                    else
+                        enoughPoint = false;
                 }
             }
-            if (neededskills == userskill.size()) {
+            if (neededskills == userskill.size() && enoughPoint) {
                 temp = "<tr>"
                         + "<td>" + project.getId() + "</td>"
                         + "<td>" + project.getTitle() + "</td>"
@@ -59,10 +63,10 @@ public class ProjectPage implements Page {
                         + "<td>" + project.getDeadline() + "</td>"
                         + "<td>" + project.getBudget() + "</td>"
                         + "</tr>";
+
             }
             list.append(temp);
         }
         return list.toString();
     }
-    ////////////need to check the point for each project
 }
