@@ -1,14 +1,16 @@
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import com.sun.net.httpserver.HttpExchange;
 
 public class ProjectPage implements Page {
-    private Projects myProjects;
-    private ArrayList<Project> projects;
-    private String projectsList = FindWantedProjects();
+    Projects myProjects;
+    ArrayList<Project> projects;
+    String projectsList ;
+//    String projectsList = "";
 
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
@@ -27,45 +29,55 @@ public class ProjectPage implements Page {
                 +"</table>"
                 +"</body>"
                 + "</html>";
-
-        httpExchange.sendResponseHeaders(200, response.length());
+//        byte[] hi = response.getBytes();
+        httpExchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.US_ASCII).length);
+        httpExchange.getResponseHeaders().set("Content-Type", "text/html");
         OutputStream os = httpExchange.getResponseBody();
-        os.write(response.getBytes());
+//        System.out.println(response.getBytes(StandardCharsets.UTF_8).length);
+
+//        System.out.println(hi.toString());
+
+//        System.out.println(new String(hi));
+        os.write(response.getBytes(StandardCharsets.US_ASCII));
+
+//
+//        os.flush();
         os.close();
     }
     public ProjectPage() {
         myProjects = Projects.getInstance();
-        projects = Projects.getProjects();
+
+        projects = myProjects.getProjects();
+        projectsList = FindWantedProjects();
     }
 
-    private String FindWantedProjects() {
+    public String FindWantedProjects() {
+//        new ProjectPage();
         MyUser myuser = MyUser.getInstance();
         StringBuilder list = new StringBuilder();
-        String temp = "";
-        int neededskills = 0 ;
-        boolean enoughPoint = true;
-        ArrayList<Skills> userskill = myuser.getMyusers_reg(0).getSkill();
-        for (Project project : projects) {
-            for (Skills anUserskill : userskill) {
-                int index = project.findskil(anUserskill);
-                if (index != -1) {
-                    if(anUserskill.getPoints()== project.getNeedskil().get(index).getPoints())
-                        neededskills++;
-                    else
-                        enoughPoint = false;
-                }
-            }
-            if (neededskills == userskill.size() && enoughPoint) {
-                temp = "<tr>"
-                        + "<td>" + project.getId() + "</td>"
-                        + "<td>" + project.getTitle() + "</td>"
-                        + "<td>" + project.getDescription() + "</td>"
-                        + "<td>" + project.getDeadline() + "</td>"
-                        + "<td>" + project.getBudget() + "</td>"
-                        + "</tr>";
 
-            }
-            list.append(temp);
+        int neededskills = 0 ;
+        ArrayList<Skills> userskill = myuser.getMyusers_reg(0).getSkill();
+        for(int i = 0 ; i < projects.size() ; i++)
+        {
+            String temp = "";
+           for(int j = 0 ; j<userskill.size();j++) {
+               int index = projects.get(i).findskil(userskill.get(j));
+               if(index != -1){
+                   neededskills++;
+               }
+//               else break;
+           }
+           if(neededskills == userskill.size()){
+                        temp ="<tr>"
+                                +"<td>"+ projects.get(i).getId() +"</td>"
+                                +"<td>"+projects.get(i).getTitle()+"</td>"
+                                +"<td>"+projects.get(i).getDescription()+"</td>"
+                                +"<td>"+projects.get(i).getDeadline()+"</td>"
+                                +"<td>"+projects.get(i).getBudget()+"</td>"
+                            +"</tr>";
+           }
+           list.append(temp);
         }
         return list.toString();
     }
