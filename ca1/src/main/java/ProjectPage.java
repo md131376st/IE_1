@@ -13,10 +13,14 @@ public class ProjectPage implements Page {
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
         String response =
-                "<html>"
-                        + "<body><h1>You can see projects below111</h1></body>"
-                        +""
-                        + "</html>";
+                "<html><title>Projects</title><style>"
+                +"table {text-align: center;margin: 0 auto;}"
+                +"td {min-width: 300px;margin: 5px 5px 5px 5px;text-align: center;}"
+                + "</style><body><h3>"
+                +"<table><tr><th>id</th>"
+                + projectsList
+                +"</h3></body>"
+                + "</html>";
         httpExchange.sendResponseHeaders(200, response.length());
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
@@ -28,11 +32,11 @@ public class ProjectPage implements Page {
     }
 
     private String FindWantedProjects() {
-        String list = "";
-        for(int i = 0 ; i < projects.size() ; i++)
-        {
-            
-        }
+        String list = "idtitlebudget";
+//        for(int i = 0 ; i < projects.size() ; i++)
+//        {
+//            list+="\t"
+//        }
         return list;
     }
 }

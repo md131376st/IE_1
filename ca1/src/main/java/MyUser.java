@@ -34,19 +34,20 @@ class MyUser {
             return -1;
     }
     public static void addTempUser(){
-        ArrayList<Skills> Skill = null;
+
         Skills first = new Skills("HTML" , 5 );
         Skills second = new Skills("JavaScript" , 4 );
         Skills third = new Skills("C++" , 2 );
         Skills forth = new Skills("Java" , 3 );
 
-        Skill.add(first);
-        Skill.add(second);
-        Skill.add(third);
-        Skill.add(forth);
+        ArrayList<Skills> skill = null;
+        skill.add(first);
+        skill.add(second);
+        skill.add(third);
+        skill.add(forth);
 
         Register tempUser = new Register("1" , "Ali" , "SharifZade" , "WebProgrammer"
-                ,"",Skill,":)");
+                ,"",skill,":)");
 
         ourInstance.adduser(tempUser);
     }
