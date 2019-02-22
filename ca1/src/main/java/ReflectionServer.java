@@ -32,7 +32,6 @@ public class ReflectionServer {
                     InstantiationException |
                     IllegalAccessException |
                     IllegalArgumentException |
-                    NullPointerException|
                     InvocationTargetException |
                     NoSuchMethodException |
                     SecurityException e) {
