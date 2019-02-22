@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import com.sun.net.httpserver.HttpExchange;
 
 public class UserPage implements Page {
-    String response = "";
+    private String response = "";
     @Override
-    public void HandleRequest(HttpExchange httpExchange) throws IOException {
+    public void HandleRequest(HttpExchange httpExchange) throws IOException, ClassNotFoundException {
         String[] path = httpExchange.getRequestURI().getPath().split("/");
         String id = path[3];
 
         Register user = MyUser.getInstance().FindUser(id);
-        response = "<html><title>Project Info</title>"
+        if (user==null) throw new ClassNotFoundException();
+        else
+            {response = "<html><title>Project Info</title>"
                 + "<body>"
                 +"<ul>"
                 +   "<li>id = " + user.getId() + "</li>"
@@ -23,9 +25,11 @@ public class UserPage implements Page {
                 + "</ul> "
                 +"</body>"
                 + "</html>";
-        httpExchange.sendResponseHeaders(200, response.length());
+        httpExchange.sendResponseHeaders(200, response.getBytes().length);
+        httpExchange.getResponseHeaders().set("Content-Type", "text/html");
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
+            }
     }
 }

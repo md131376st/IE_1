@@ -27,14 +27,16 @@ public class ProjectId implements Page {
                     + "</ul> "
                     +"</body>"
                     + "</html>";
-            httpExchange.sendResponseHeaders(200, response.length());
+            httpExchange.sendResponseHeaders(200, response.getBytes().length);
+            httpExchange.getResponseHeaders().set("Content-Type", "text/html");
         }
 
         else{
             response = "<html>"
                     + "<body><h2>You don't have enough requirement</body>"
                     + "</html>";
-            httpExchange.sendResponseHeaders(403, response.length());
+            httpExchange.sendResponseHeaders(403, response.getBytes().length);
+            httpExchange.getResponseHeaders().set("Content-Type", "text/html");
         }
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
