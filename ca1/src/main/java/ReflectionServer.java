@@ -11,8 +11,8 @@ import com.sun.net.httpserver.HttpServer;
 
 public class ReflectionServer {
     public void startServer() throws Exception {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8089), 0);
-        server.createContext("/test", new MyHandler());
+        HttpServer server = HttpServer.create(new InetSocketAddress(8082), 0);
+        server.createContext("/CA2", new MyHandler());
         server.setExecutor(null);
         server.start();
     }
@@ -47,9 +47,4 @@ public class ReflectionServer {
             }
         }
     }
-
-//    public static void main(String[] args) throws Exception {
-//        ReflectionServer server = new ReflectionServer();
-//        server.startServer();
-//    }
 }
