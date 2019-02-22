@@ -7,7 +7,7 @@ class Projects {
     private static Projects ourInstance = new Projects();
     static private ArrayList<Project> projects = new ArrayList<>();
 
-    static Projects getInstance() {
+    static public Projects getInstance() {
         return ourInstance;
     }
 
