@@ -8,8 +8,8 @@ import com.sun.net.httpserver.HttpExchange;
 public class ProjectPage implements Page {
     Projects myProjects;
     ArrayList<Project> projects;
-//    String projectsList = FindWantedProjects();
-    String projectsList = "";
+    String projectsList = FindWantedProjects();
+//    String projectsList = "";
 
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
