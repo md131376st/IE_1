@@ -16,6 +16,7 @@ public class UserPage implements Page {
         else
             {response = "<html><title>Project Info</title>"
                 + "<body>"
+                    +"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                 +"<ul>"
                 +   "<li>id = " + user.getId() + "</li>"
                 +   "<li>first name = " + user.getFirstName() + "</li>"

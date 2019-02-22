@@ -17,6 +17,7 @@ public class ProjectPage implements Page {
         String response =
                 "<html><title>Projects</title>"
                 +"<body><h3>You can See Projects below</h3>"
+                        +"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                         +"<table style=width:100%>"
                         +"<tr>"
                             +"<th>id</th>"
@@ -30,7 +31,7 @@ public class ProjectPage implements Page {
                 +"</body>"
                 + "</html>";
 //        byte[] hi = response.getBytes();
-        httpExchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_16).length);
+        httpExchange.sendResponseHeaders(200, response.getBytes().length);
         httpExchange.getResponseHeaders().set("Content-Type", "text/html");
 //        httpExchange.getResponseHeaders().set("encoding", "utf_16");
         OutputStream os = httpExchange.getResponseBody();
@@ -39,7 +40,7 @@ public class ProjectPage implements Page {
 //        System.out.println(hi.toString());
 
 //        System.out.println(new String(hi));
-        os.write(response.getBytes(StandardCharsets.UTF_16));
+        os.write(response.getBytes());
 
 //
 //        os.flush();
