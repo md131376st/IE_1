@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import com.sun.net.httpserver.HttpExchange;
 
 public class ProjectId implements Page {
-//    Projects myProjects = Projects.getInstance();
-//    ArrayList<Project> projects = Projects.getProjects();
     String projectsList = "";
-
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
         boolean hasNeeded;
@@ -39,7 +36,6 @@ public class ProjectId implements Page {
                     + "</html>";
             httpExchange.sendResponseHeaders(403, response.length());
         }
-
         OutputStream os = httpExchange.getResponseBody();
         os.write(response.getBytes());
         os.close();
@@ -50,5 +46,4 @@ public class ProjectId implements Page {
         Register myUser=MyUser.getInstance().getMyusers_reg(0);
         return myProjects.hasNecessarySkills(id,myUser);
     }
-
 }

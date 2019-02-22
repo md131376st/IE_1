@@ -9,7 +9,6 @@ public class ProjectPage implements Page {
     private Projects myProjects;
     private ArrayList<Project> projects;
     private String projectsList = FindWantedProjects();
-//    String projectsList = "";
 
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
