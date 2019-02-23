@@ -57,18 +57,22 @@ public class ProjectPage implements Page {
         MyUser myuser = MyUser.getInstance();
         StringBuilder list = new StringBuilder();
 
-        int neededskills = 0 ;
+
         ArrayList<Skills> userskill = myuser.getMyusers_reg(0).getSkill();
         for (Project project : projects) {
             String temp = "";
-            for (Skills anUserskill : userskill) {
-                int index = project.findskil(anUserskill);
+            int neededskills = 0;
+            for (Skills prjskill : project.getNeedskil()) {
+                int index = myuser.getMyusers_reg(0).findSkill(prjskill.getName());
                 if (index != -1) {
-                    neededskills++;
+                    if(prjskill.getPoints() <= userskill.get(index).getPoints()) {
+                        neededskills++;
+                    }
+
                 }
-//               else break;
+               else break;
             }
-            if (neededskills == userskill.size()) {
+            if (neededskills == project.getNeedskil().size()) {
                 temp = "<tr>"
                         + "<td>" + project.getId() + "</td>"
                         + "<td>" + project.getTitle() + "</td>"

@@ -7,11 +7,11 @@ class Projects {
     private static Projects ourInstance = new Projects();
     static private ArrayList<Project> projects = new ArrayList<>();
 
-    static public Projects getInstance() {
+    static Projects getInstance() {
         return ourInstance;
     }
 
-    static public ArrayList<Project> getProjects(){
+    static ArrayList<Project> getProjects(){
         return projects;
     }
     private Projects() {
@@ -25,7 +25,7 @@ class Projects {
             return -1;
 
     }
-    public static int getProjectIndexByID(String id){
+    static int getProjectIndexByID(String id){
         for (int i = 0 ; i < projects.size() ; i++)
         {
             if(projects.get(i).getId().equals(id)){
@@ -48,15 +48,23 @@ class Projects {
         }
         if(projectFound)
         {
-            for (Skills temp : user.getSkill()) {
-                int skillIndex =  projects.get(index).findskil(temp);
+            for (Skills temp : projects.get(index).getNeedskil()) {
+                int skillIndex =  user.findSkill(temp.getName());
                 if(skillIndex != -1) {
-                    if (projects.get(index).getNeedskil().get(skillIndex).getPoints() > temp.getPoints())
+//                    System.out.println(user.getSkill().get(index).getPoints());
+                    if (temp.getPoints() > user.getSkill().get(skillIndex ).getPoints())
                         enoughSkill = false;
+
+
+                }
+                else {
+                    enoughSkill = false;
                 }
             }
+            return enoughSkill;
         }
-        return enoughSkill;
+        return false;
+
     }
     void get_project_url(String url){
         MyHttpURLConnection get_projects = new MyHttpURLConnection();

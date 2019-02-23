@@ -8,6 +8,11 @@ public class Project {
     private String id;
     private String title;
     private String description;
+
+    String getImageURL() {
+        return imageURL;
+    }
+
     private String imageURL;
     private long deadline;
     private Register winner;
@@ -42,15 +47,15 @@ public class Project {
         return title;
     }
 
-    public String getDescription() {return description; }
+    String getDescription() {return description; }
 
-    public long getDeadline() {return deadline;}
+    long getDeadline() {return deadline;}
 
-    public ArrayList<Skills> getNeedskil() {
+    ArrayList<Skills> getNeedskil() {
         return needskil;
     }
 
-    public int getBudget() {
+    int getBudget() {
         return budget;
     }
 
@@ -75,7 +80,7 @@ public class Project {
      return true;
     }
 
-    public int findskill(Register newuser, Skills aNeedskil){
+    private int findskill(Register newuser, Skills aNeedskil){
         for (int i = 0; i<newuser.getSkill().size(); i++){
             if(newuser.getSkill().get(i).getName().equals(aNeedskil.getName()))
                 return i;
@@ -83,7 +88,7 @@ public class Project {
         return -1;
     }
 
-    public int findskil(Skills userskil){
+    private int findskil(Skills userskil){
         for (int i=0; i<this.needskil.size(); i++){
             if(needskil.get(i).getName().equals(userskil.getName()))
                 return i;

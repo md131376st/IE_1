@@ -25,6 +25,7 @@ public class ProjectId implements Page {
                     +   "<li>description = " + selected.getDescription() + "</li>"
                     +   "<li>deadline = " + selected.getDeadline() + "</li>"
                     +   "<li>budget = " + selected.getBudget() + "</li>"
+                    +   "<li>imageURL = " + selected.getImageURL() + "</li>"
                     + "</ul> "
                     +"</body>"
                     + "</html>";

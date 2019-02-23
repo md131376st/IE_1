@@ -30,26 +30,33 @@ class Register {
     ArrayList<Skills> getSkill() {
         return Skill;
     }
+    int findSkill(String name){
+        for (int i = 0 ; i < Skill.size() ; i++) {
+            if(Skill.get(i).getName().equals(name))
+                return i;
 
+        }
+        return -1;
+    }
     private void addSkills(Skills rskill){
         this.Skill.add(rskill);
     }
 
     public String getId() { return id;}
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
-    public String getJobTitle() {
+    String getJobTitle() {
         return jobTitle;
     }
 
-    public String getBio() {
+    String getBio() {
         return bio;
     }
 }
