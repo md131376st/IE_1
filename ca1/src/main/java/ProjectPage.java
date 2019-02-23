@@ -30,20 +30,10 @@ public class ProjectPage implements Page {
                 +"</table>"
                 +"</body>"
                 + "</html>";
-//        byte[] hi = response.getBytes();
         httpExchange.sendResponseHeaders(200, response.getBytes().length);
         httpExchange.getResponseHeaders().set("Content-Type", "text/html");
-//        httpExchange.getResponseHeaders().set("encoding", "utf_16");
         OutputStream os = httpExchange.getResponseBody();
-//        System.out.println(response.getBytes(StandardCharsets.UTF_8).length);
-
-//        System.out.println(hi.toString());
-
-//        System.out.println(new String(hi));
         os.write(response.getBytes());
-
-//
-//        os.flush();
         os.close();
     }
     public ProjectPage() {

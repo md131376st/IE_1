@@ -51,7 +51,6 @@ class Projects {
             for (Skills temp : projects.get(index).getNeedskil()) {
                 int skillIndex =  user.findSkill(temp.getName());
                 if(skillIndex != -1) {
-//                    System.out.println(user.getSkill().get(index).getPoints());
                     if (temp.getPoints() > user.getSkill().get(skillIndex ).getPoints())
                         enoughSkill = false;
 
