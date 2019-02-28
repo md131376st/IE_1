@@ -1,4 +1,5 @@
 import junit.framework.TestCase;
+import models.Utility;
 
 import java.io.FileNotFoundException;
 

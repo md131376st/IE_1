@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/DemoServlet")
+@WebServlet("/project/*")
 public class Project_page extends HttpServlet{
     protected void doGet(
             HttpServletRequest request,
@@ -19,7 +19,7 @@ public class Project_page extends HttpServlet{
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<h3>Hello World!</h3>");
+        out.println("<h3>Hellosld!</h3>");
 
     }
 }

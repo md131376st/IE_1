@@ -1,7 +1,7 @@
+package models;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import com.sun.net.httpserver.HttpExchange;
@@ -15,8 +15,8 @@ public class ProjectPage implements Page {
     @Override
     public void HandleRequest(HttpExchange httpExchange) throws IOException {
         String response =
-                "<html><title>Projects</title>"
-                +"<body><h3>You can See Projects below</h3>"
+                "<html><title>models.Projects</title>"
+                +"<body><h3>You can See models.Projects below</h3>"
                         +"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                         +"<table style=width:100%>"
                         +"<tr>"

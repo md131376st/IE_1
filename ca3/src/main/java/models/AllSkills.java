@@ -1,15 +1,14 @@
-import org.json.JSONArray;
-import org.json.JSONObject;
+package models;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-class AllSkills {
+public class AllSkills {
     private static AllSkills ourInstance = new AllSkills();
     private static ArrayList<Skills> allskills = new ArrayList<>();
     private static String url ;
 
-    void setAllskills() {
+    public void setAllskills() {
         MyHttpURLConnection get_skills = new MyHttpURLConnection();
         try {
             get_skills.get_url(url);
@@ -20,10 +19,10 @@ class AllSkills {
         }
 
     }
-    void setUrl(String url) {
+    public void setUrl(String url) {
         AllSkills.url = url;
     }
-    static AllSkills getInstance() {
+    public  static AllSkills getInstance() {
         return ourInstance;
     }
 

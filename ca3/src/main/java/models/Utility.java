@@ -1,3 +1,5 @@
+package models;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,12 +10,12 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class Utility {
+public class Utility {
 
-    Utility() {
+    public Utility() {
     }
 
-    JSONObject jsonstring(String commandData){
+    public JSONObject jsonstring(String commandData){
         JSONTokener tokener = new JSONTokener(commandData);
         return new JSONObject(tokener);
     }
@@ -25,9 +27,9 @@ class Utility {
         }
         return jsonobjects;
     }
-    @SuppressWarnings("unchecked")
-    Register getDefultUser()throws FileNotFoundException {
-//        JSONTokener tokener = new JSONTokener(new FileReader("D:/University/3971-2/IE/Projects/2/2/ca1/defultuser.json"));
+//    @SuppressWarnings("unchecked")
+    public Register getDefultUser()throws FileNotFoundException {
+//        JSONTokener tokener = new JSONTokener(new FileReader("D:/University/3971-2/IE/models.Projects/2/2/ca1/defultuser.json"));
         JSONTokener tokener = new JSONTokener(new FileReader("/Users/md/Desktop/collage/IE/CA1/SampleCode/ca1/defultuser.json"));
         JSONObject object = new JSONObject(tokener);
         ArrayList <Object> info = jsonparser(new ArrayList<>(Arrays.asList("id", "firstName", "lastName"
@@ -36,7 +38,7 @@ class Utility {
                             ,(String)info.get(4),(ArrayList<Skills>)info.get(5),(String)info.get(6));
     }
 
-    private ArrayList<Object> jsonparser(ArrayList<String> data, JSONObject object)throws JSONException {
+    public ArrayList<Object> jsonparser(ArrayList<String> data, JSONObject object)throws JSONException {
             ArrayList<Object> resultdata = new ArrayList<>();
             for (String aData : data) {
                 switch (aData) {
@@ -63,7 +65,7 @@ class Utility {
         return resultdata;
     }
 
-    private ArrayList<Skills> getskillsarrya(JSONObject object) {
+    public ArrayList<Skills> getskillsarrya(JSONObject object) {
         ArrayList<Skills> skills = new ArrayList<>();
         JSONArray myskills = object.getJSONArray("skills");
         for (int i = 0; i < myskills.length(); i++) {
@@ -72,7 +74,7 @@ class Utility {
         return skills;
     }
 
-    ArrayList<Skills> getskilsnames(ArrayList<JSONObject> nameskils){
+    public ArrayList<Skills> getskilsnames(ArrayList<JSONObject> nameskils){
         ArrayList<Skills> skills = new ArrayList<>();
         for (JSONObject nameskil : nameskils) {
             skills.add(new Skills(nameskil.getString("name"), 0));
@@ -81,7 +83,7 @@ class Utility {
     }
 
     @SuppressWarnings("unchecked")
-    ArrayList<Project> getprject(ArrayList<JSONObject> projectlist) {
+    public ArrayList<Project> getprject(ArrayList<JSONObject> projectlist) {
         ArrayList<Project> project = new ArrayList<>();
         for (JSONObject projasn : projectlist) {
             ArrayList<Object> resultdata = jsonparser(new ArrayList<>(Arrays.asList("id", "title"

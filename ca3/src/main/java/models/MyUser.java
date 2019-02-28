@@ -1,6 +1,8 @@
+package models;
+
 import java.util.ArrayList;
 
-class MyUser {
+public class MyUser {
     private static MyUser ourInstance = new MyUser();
 
     Register getMyusers_reg(int index) {
@@ -9,7 +11,7 @@ class MyUser {
 
     static private ArrayList<Register> myusers = new ArrayList<>() ;
 
-    static MyUser getInstance() {
+    public static MyUser getInstance() {
         if(ourInstance == null) {
             ourInstance = new MyUser();
         }
@@ -18,7 +20,7 @@ class MyUser {
 
     private MyUser() {
     }
-    void adduser(Register newuser){
+    public void adduser(Register newuser){
         int index = indexofstring(newuser.getUsername() );
         if(index == -1) {
             myusers.add(newuser);
@@ -26,7 +28,7 @@ class MyUser {
         else
             System.out.println("This User Has Registered Before");
     }
-    int indexofstring(String comperstring){
+    public int indexofstring(String comperstring){
             for (int i = 0 ; i<myusers.size(); i++ ){
                 if(myusers.get(i).getUsername().equals(comperstring))
                     return i;

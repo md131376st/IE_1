@@ -1,9 +1,8 @@
-import org.json.JSONObject;
+package models;
 
 import java.util.ArrayList;
-import org.json.JSONArray;
 
-class Register {
+public class  Register {
     private String id;
     private String firstName;
     private String lastName;
@@ -23,14 +22,14 @@ class Register {
         this.bio = bio;
     }
 
-    String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    ArrayList<Skills> getSkill() {
+    public ArrayList<Skills> getSkill() {
         return Skill;
     }
-    int findSkill(String name){
+    public int findSkill(String name){
         for (int i = 0 ; i < Skill.size() ; i++) {
             if(Skill.get(i).getName().equals(name))
                 return i;
@@ -44,19 +43,19 @@ class Register {
 
     public String getId() { return id;}
 
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    String getJobTitle() {
+    public String getJobTitle() {
         return jobTitle;
     }
 
-    String getBio() {
+    public String getBio() {
         return bio;
     }
 }

@@ -1,3 +1,5 @@
+package models;
+
 import sun.net.www.protocol.http.HttpURLConnection;
 
 import java.io.BufferedReader;

@@ -1,3 +1,4 @@
+package models;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -38,7 +39,7 @@ public class ReflectionServer {
                 e.printStackTrace();
                 String response =
                         "<html>"
-                                + "<body>Page \""+ page + "\" not found.</body>"
+                                + "<body>models.Page \""+ page + "\" not found.</body>"
                                 + "</html>";
                 httpExchange.sendResponseHeaders(404, response.length());
                 OutputStream os = httpExchange.getResponseBody();

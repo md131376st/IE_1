@@ -1,3 +1,5 @@
+package models;
+
 import org.json.JSONObject;
 
 class Skills {

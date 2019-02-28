@@ -1,3 +1,5 @@
+package models;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.lang.Math;
@@ -43,7 +45,7 @@ public class Project {
     }
     public String getId() { return id; }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 

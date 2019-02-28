@@ -1,13 +1,15 @@
+package models;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-class Projects {
+public class Projects {
     private static Projects ourInstance = new Projects();
     static private ArrayList<Project> projects = new ArrayList<>();
 
-    static Projects getInstance() {
+    public static Projects getInstance() {
         return ourInstance;
     }
 
@@ -65,7 +67,7 @@ class Projects {
         return false;
 
     }
-    void get_project_url(String url){
+    public void get_project_url(String url){
         MyHttpURLConnection get_projects = new MyHttpURLConnection();
         try {
             get_projects.get_url(url);
@@ -81,7 +83,7 @@ class Projects {
             projects.add(newproject);
         }
         else
-            System.out.println("This Project Was Added Before");
+            System.out.println("This models.Project Was Added Before");
     }
 
     boolean addbid(String commandData, MyUser myUser){
@@ -96,7 +98,7 @@ class Projects {
                 System.out.println("User Not Found");
             }
             else
-                System.out.println("Project Not Found");
+                System.out.println("models.Project Not Found");
             return false;
         }
     }
@@ -107,7 +109,7 @@ class Projects {
         {
             return projects.get(index1).auction();
         }
-        return "Project not Found";
+        return "models.Project not Found";
 
     }
 }

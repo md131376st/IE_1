@@ -1,6 +1,7 @@
+package models;
+
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 import com.sun.net.httpserver.HttpExchange;
 
@@ -16,7 +17,7 @@ public class ProjectId implements Page {
         if(hasNeeded)
         {
             Project selected = Projects.getProjects().get(Projects.getProjectIndexByID(id));
-            response = "<html><title>Project Info</title>"
+            response = "<html><title>models.Project Info</title>"
                     + "<body>"
                     +"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                     +"<ul>"

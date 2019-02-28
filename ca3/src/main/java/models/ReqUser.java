@@ -1,21 +1,22 @@
+package models;
 
-class ReqUser {
+public class ReqUser {
 
 
     private Register userREQ;
     private int bidAmount ;
     private Project project;
 
-    ReqUser(Register userREQ, int bidAmount) {
+    public ReqUser(Register userREQ, int bidAmount) {
         this.userREQ = userREQ;
         this.bidAmount = bidAmount;
     }
 
-    Register getUserREQ() {
+    public Register getUserREQ() {
         return userREQ;
     }
 
-    int getBidAmount() {
+    public int getBidAmount() {
         return bidAmount;
     }
 }
