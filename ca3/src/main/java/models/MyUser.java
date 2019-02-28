@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class MyUser {
     private static MyUser ourInstance = new MyUser();
 
-    Register getMyusers_reg(int index) {
+    public Register getMyusers_reg(int index) {
         return myusers.get(index);
     }
 

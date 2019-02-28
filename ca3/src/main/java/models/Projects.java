@@ -13,7 +13,7 @@ public class Projects {
         return ourInstance;
     }
 
-    static ArrayList<Project> getProjects(){
+    public static ArrayList<Project> getProjects(){
         return projects;
     }
     private Projects() {
@@ -27,7 +27,7 @@ public class Projects {
             return -1;
 
     }
-    static int getProjectIndexByID(String id){
+    public static int getProjectIndexByID(String id){
         for (int i = 0 ; i < projects.size() ; i++)
         {
             if(projects.get(i).getId().equals(id)){
